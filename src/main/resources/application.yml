@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ms-yanki
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: admin
+      password: nttdatacorazon
+  config:
+    import: optional:configserver:http://localhost:8888
