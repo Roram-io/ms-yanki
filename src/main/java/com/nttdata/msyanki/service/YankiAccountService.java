@@ -16,4 +16,6 @@ public interface YankiAccountService {
 
     Flux<YankiAccount> transaction(String origin, String destiny, double amount);
 
+    Mono<YankiAccount> singleMove(String id, double amount);
+
 }

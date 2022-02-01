@@ -54,4 +54,16 @@ public class YankiAccountServiceImpl implements YankiAccountService {
 
         return Flux.concat(originAcc, destinyAcc);
     }
+
+    @Override
+    public Mono<YankiAccount> singleMove(String id, double amount){
+        return yankiAccountRepository.findById(id).switchIfEmpty(Mono.empty())
+                .flatMap(e -> {
+            if (amount < 0 && e.getAmount()>amount) {
+                e.setAmount(e.getAmount()+amount);
+                return yankiAccountRepository.save(e);
+            }
+            else return Mono.empty();
+        });
+    }
 }

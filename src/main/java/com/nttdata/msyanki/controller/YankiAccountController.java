@@ -40,4 +40,9 @@ public class YankiAccountController {
         return yankiAccountService.transaction(origin,destiny,amount);
     }
 
+    @PostMapping("/singleMove")
+    public Mono<YankiAccount> getAccount(@RequestParam("id") String id, @RequestParam("amount") double amount){
+        return yankiAccountService.singleMove(id,amount);
+    }
+
 }
